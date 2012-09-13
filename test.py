@@ -4,8 +4,8 @@ import unittest
 import mechanize
 
 # This won't function until these variables are set to valid credentials
-email = "martin.simon@email.com"
-password = "natalia2602"
+email = "dropbox.email"
+password = "dropbox.password"
 
 class TestSequenceFunctions(unittest.TestCase):
 
