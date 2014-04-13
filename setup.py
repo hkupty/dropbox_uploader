@@ -5,7 +5,7 @@ setup(
     version='0.1.1',
     author='Henry "Ingvij" Kupty',
     author_email='hkupty@gmail.com',
-    packages=['dropbox_uploader'],
+    packages=['dbupload'],
     url='https://github.com/hkupty/dropbox_uploader',
     license='LICENSE.txt',
     description='Fairly simple dropbox backup script written in python',
