@@ -55,7 +55,6 @@ class DropboxConnection:
             self.token = re.findall(r"TOKEN: '(.+)'", home_src)[0]
         except:
             raise(Exception("Unable to find constants for AJAX requests"))
-            self.out()
 
     def upload_file(self, local_file, remote_dir, remote_file):
         """ Upload a local file to Dropbox """
@@ -133,8 +132,10 @@ class DropboxConnection:
             return False
 
     def out(self):
+        """
+        This is highly experimental yet..
+        """
         req = urllib2.Request('https://api.dropbox.com/1/disable_access_token',
                               {})
         req.get_method = lambda: "POST"
-        ret = urllib2.urlopen(req)
-        return ret.code == '200'
+        self.browser.open(req)
