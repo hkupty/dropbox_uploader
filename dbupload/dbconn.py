@@ -130,3 +130,10 @@ class DropboxConnection:
             return True
         else:
             return False
+
+    def out(self):
+        req = urllib2.Request('https://api.dropbox.com/1/disable_access_token',
+                              {})
+        req.get_method = lambda: "POST"
+        ret = urllib2.urlopen(req)
+        return ret.code == '200'

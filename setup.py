@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='drobpx_upload',
-    version='0.1.1',
+    version='0.1.2',
     author='Henry "Ingvij" Kupty',
     author_email='hkupty@gmail.com',
     packages=['dbupload'],
