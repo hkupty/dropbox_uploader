@@ -55,6 +55,7 @@ class DropboxConnection:
             self.token = re.findall(r"TOKEN: '(.+)'", home_src)[0]
         except:
             raise(Exception("Unable to find constants for AJAX requests"))
+            self.out()
 
     def upload_file(self, local_file, remote_dir, remote_file):
         """ Upload a local file to Dropbox """
