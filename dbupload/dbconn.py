@@ -7,6 +7,7 @@ import json
 app_key = ''
 app_secret = ''
 
+# I might use this --> https://github.com/PrincessPolymath/python-oauth2
 
 class DropboxConnection:
     """ Creates a connection to Dropbox """
@@ -26,8 +27,21 @@ class DropboxConnection:
         self.browser.set_handle_robots(False)
         authorize_url = self.flow.start()
 
+	print url
+
         # Browse to the login page
         self.browser.open(authorize_url)
+
+        self.browser.forms = [i for i in self.browser.forms()][0]
+
+        # Should I check return?
+        self.browser.submit()
+
+        # should find the text containing the token
+        
+        #
+
+        code = ''
 
         access_token, user_id = self.flow.finish(code)
 
