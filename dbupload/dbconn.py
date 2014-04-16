@@ -1,3 +1,5 @@
+import requests
+import re
 import mechanize
 import dropbox
 
@@ -10,9 +12,12 @@ app_secret = 'cxp1n63f06rww9y'
 class DropboxConnection:
     """ Creates a connection to Dropbox """
 
-    def __init__(self):
+    def __init__(self, uname, pwd):
         self.flow = dropbox.client.DropboxOAuth2FlowNoRedirect(
             app_key, app_secret)
+
+        self.username = uname
+        self.password = pwd
 
         self.login()
 
@@ -25,12 +30,21 @@ class DropboxConnection:
         authorize_url = self.flow.start()
 
         # Browse to the login page
-        self.browser.open(authorize_url)
+        page = self.browser.open(authorize_url).read()
 
-        self.browser.forms = [i for i in self.browser.forms()][0]
+        token = re.findall(r"TOKEN: '(.+)'", page)[0]
 
-        # Should I check return?
-        self.browser.submit()
+        payload = {
+            't': token,
+            'cont': '',
+            'login_email': self.username,
+            'login_password': self.password,
+            'is_xhr': 'true'
+        }
+
+        auth = requests.post('https://www.dropbox.com/ajax_login', params=payload)
+
+
 
         # should find the text containing the token
 
