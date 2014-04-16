@@ -1,13 +1,11 @@
 import mechanize
 import dropbox
-import urllib2
-import re
-import json
 
-app_key = ''
-app_secret = ''
+app_key = 'jmy9doyome57vcm'
+app_secret = 'cxp1n63f06rww9y'
 
 # I might use this --> https://github.com/PrincessPolymath/python-oauth2
+
 
 class DropboxConnection:
     """ Creates a connection to Dropbox """
@@ -15,7 +13,6 @@ class DropboxConnection:
     def __init__(self):
         self.flow = dropbox.client.DropboxOAuth2FlowNoRedirect(
             app_key, app_secret)
-
 
         self.login()
 
@@ -27,8 +24,6 @@ class DropboxConnection:
         self.browser.set_handle_robots(False)
         authorize_url = self.flow.start()
 
-	print url
-
         # Browse to the login page
         self.browser.open(authorize_url)
 
@@ -38,8 +33,6 @@ class DropboxConnection:
         self.browser.submit()
 
         # should find the text containing the token
-        
-        #
 
         code = ''
 
@@ -52,23 +45,22 @@ class DropboxConnection:
 
         with open(local_file, 'rb') as f:
             # TODO: Check (or assert) response
-            client.put_file(remote_file_full_path, f)
+            self.client.put_file(remote_file_full_path, f)
 
     def get_dir_list(self, remote_dir):
         """ Get file info for a directory """
 
-       raise NotImplemented("On version 0.2.1")
+        raise NotImplemented("On version 0.2.1")
 
     def get_download_url(self, remote_dir, remote_file):
         """ Get the URL to download a file """
 
-       raise NotImplemented("On version 0.2.1")
+        raise NotImplemented("On version 0.2.1")
 
     def download_file(self, remote_dir, remote_file, local_file):
         """ Download a file and save it locally """
 
         raise NotImplemented("On version 0.2.1")
-
 
     def out(self):
         """
