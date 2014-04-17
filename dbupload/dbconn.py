@@ -6,9 +6,6 @@ import dropbox
 app_key = 'jmy9doyome57vcm'
 app_secret = 'cxp1n63f06rww9y'
 
-# I might use this --> https://github.com/PrincessPolymath/python-oauth2
-
-
 class DropboxConnection:
     """ Creates a connection to Dropbox """
 
@@ -18,6 +15,7 @@ class DropboxConnection:
 
         self.username = uname
         self.password = pwd
+        self.session = requests.Session()
 
         self.login()
 
@@ -25,12 +23,10 @@ class DropboxConnection:
         """ Login to Dropbox and return mechanize browser instance """
 
         # Fire up a browser using mechanize
-        self.browser = mechanize.Browser()
-        self.browser.set_handle_robots(False)
         authorize_url = self.flow.start()
 
         # Browse to the login page
-        page = self.browser.open(authorize_url).read()
+        page = self.session.get(authorize_url)._content
 
         token = re.findall(r"TOKEN: '(.+)'", page)[0]
 
