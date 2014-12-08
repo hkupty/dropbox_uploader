@@ -1,6 +1,8 @@
 pydropbox
 =========
 
+[![Code Health](https://landscape.io/github/hkupty/pydropbox/master/landscape.svg)](https://landscape.io/github/hkupty/pydropbox/master)
+
 This project is born out of the need to automatically upload documents to dropbox.
 
 This is orignially forked from https://github.com/c0ding/dropbox_uploader, but this diverged a lot from the original project in the internals.

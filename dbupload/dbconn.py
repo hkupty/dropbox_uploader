@@ -1,3 +1,5 @@
+# encoding: utf-8
+""" Connect with dropbox. """
 import requests
 import re
 import mechanize
@@ -6,7 +8,9 @@ import dropbox
 app_key = 'jmy9doyome57vcm'
 app_secret = 'cxp1n63f06rww9y'
 
+
 class DropboxConnection:
+
     """ Creates a connection to Dropbox """
 
     def __init__(self, uname, pwd):
@@ -65,20 +69,20 @@ class DropboxConnection:
     def get_dir_list(self, remote_dir):
         """ Get file info for a directory """
 
-        raise NotImplemented("On version 0.2.1")
+        raise NotImplementedError("On version 0.2.1")
 
     def get_download_url(self, remote_dir, remote_file):
         """ Get the URL to download a file """
 
-        raise NotImplemented("On version 0.2.1")
+        raise NotImplementedError("Oersion 0.2.1")
 
     def download_file(self, remote_dir, remote_file, local_file):
         """ Download a file and save it locally """
 
-        raise NotImplemented("On version 0.2.1")
+        raise NotImplementedError("Oersion 0.2.1")
 
     def out(self):
         """
         This is highly experimental yet..
         """
-        raise NotImplemented("On version 0.2.1")
+        raise NotImplementedError("Oersion 0.2.1")
