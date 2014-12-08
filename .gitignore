@@ -1,1 +1,4 @@
 .ropeproject
+*.py[co]
+build/*
+venv/*

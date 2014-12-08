@@ -42,7 +42,12 @@ class DropboxConnection:
 
 
 
-        # should find the text containing the token
+        try:
+            self.root_ns = re.findall(r'"root_ns": (\d+)', home_src)[0]
+            self.token = re.findall(
+                r'"TOKEN": "([a-zA-Z0-9_\-]+)"', home_src)[0]
+        except:
+            raise(Exception("Unable to find constants for AJAX requests"))
 
         code = ''
 
